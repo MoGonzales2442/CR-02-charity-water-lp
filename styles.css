@@ -3,18 +3,13 @@
 Primary Colors:
 - Yellow:     #FFC907
 - Blue:       #2E9DF7
+  
+/* CSS Variables for Brand Colors */
+:root {
+  --cw-blue: #2E9DF7;
+}
 
-Secondary Colors:
-- Light Blue: #8BD1CB
-- Green:      #4FCB53
-- Orange:     #FF902A
-- Red:        #F5402C
-- Dark Green: #159A48
-- Pink:       #F16061
 
-Fonts:
-- Proxima Nova
-- Avenir
 
 */
 
@@ -25,11 +20,14 @@ Fonts:
 
 /* Set up the main font and background color for the whole page */
 body {
-  background-color: #f4f8fb; /* Soft light blue for a fresh look */
-  font-family: 'Avenir', 'Proxima Nova', Arial, sans-serif;
+  background-color: #FFC907; /* Primary Yellow for background */
+  font-family: 'Proxima Nova', 'Avenir', Arial, sans-serif;
   margin: 0;
   padding: 0;
   color: #222;
+  box-sizing: border-box;
+  max-width: 100vw;
+  overflow-x: hidden;
 }
 
 /* Add a slight shadow and rounded corners to each section for depth */
@@ -37,8 +35,10 @@ section {
   background: #fff; /* White background for sections */
   border-radius: 12px; /* Rounded corners */
   box-shadow: 0 2px 8px rgba(46, 157, 247, 0.07); /* Soft blue shadow */
-  margin: 24px 10px; /* Space between sections */
-  padding: 24px 16px;
+  margin: 32px 10px; /* More space between sections */
+  padding: 32px 16px;
+  max-width: 100vw;
+  overflow-x: hidden;
 }
 
 /* Hero Section Styles */
@@ -109,24 +109,28 @@ h2 {
 }
 
 /* Donate Button Styles */
-.donate-button {
+.donate-button, .btn {
   display: inline-block;
   background-color: #4FCB53; /* Green */
   color: #fff;
-  padding: 14px 32px;
+  padding: 20px 44px; /* Even larger button for touch */
   text-decoration: none;
-  border-radius: 6px;
-  font-weight: bold;
-  font-size: 1.1em;
-  margin-top: 18px;
-  box-shadow: 0 2px 8px rgba(79, 203, 83, 0.10);
+  border-radius: 12px; /* More rounded for touch */
+  font-weight: 900; /* Extra bold */
+  font-size: 1.3em; /* Larger text */
+  margin-top: 28px;
+  box-shadow: 0 4px 16px rgba(79, 203, 83, 0.18); /* Stronger shadow */
   transition: background 0.3s, transform 0.2s;
-  border: none;
+  border: 3px solid #fff; /* White border for contrast */
   cursor: pointer;
+  touch-action: manipulation;
+  min-width: 180px;
+  min-height: 56px;
+  text-align: center;
 }
 
 /* Change button color when hovered */
-.donate-button:hover {
+.donate-button:hover, .btn:hover {
   background-color: #159A48; /* Dark Green */
   transform: translateY(-2px) scale(1.04); /* Slight lift */
 }
@@ -144,38 +148,63 @@ section {
 
 /* This media query applies styles when the screen is 600px wide or less (like on most phones) */
 @media (max-width: 600px) {
-  /* Make hero section padding smaller on small screens */
-  .hero {
-    padding: 32px 8px;
+  /* Make header and hero section padding larger for touch */
+  header, .hero {
+    padding: 40px 10px;
     font-size: 1em;
+    max-width: 100vw;
+    overflow-x: hidden;
   }
 
   /* Make headline font size smaller so it fits on small screens */
-  .hero h1 {
-    font-size: 1.4em;
+  .hero h1, header h1 {
+    font-size: 1.2em;
+    margin-bottom: 18px;
   }
 
   /* Make subheadline font size smaller */
-  .hero p {
+  .hero p, header p {
     font-size: 1em;
+    margin-bottom: 18px;
   }
 
-  /* Make story and call-to-action sections have less padding */
+  /* Make story and call-to-action sections have more padding for readability */
   .story,
   .call-to-action,
   .donation-section {
-    padding: 14px 8px;
+    padding: 22px 10px;
+    margin-bottom: 28px;
   }
 
   /* Make impact story image smaller and stack above the text */
   .impact-content {
     display: block; /* Stack items vertically */
     text-align: center;
+    margin-bottom: 18px;
   }
 
   .impact-image {
-    width: 90%;    /* Make image take up most of the width */
-    max-width: 220px;
+    width: 95%;    /* Make image take up most of the width */
+    max-width: 180px;
+    margin-bottom: 18px;
+  }
+
+  /* Prevent images from overflowing */
+  img, .impact-image {
+    max-width: 100vw;
+    height: auto;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* Make buttons easier to tap */
+  .donate-button, .btn {
+    padding: 18px 0;
+    font-size: 1.1em;
+    min-width: 90vw;
+    border-radius: 14px;
+    margin-bottom: 18px;
   }
 }
 
